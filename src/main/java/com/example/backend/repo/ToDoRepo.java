@@ -1,14 +1,33 @@
 package com.example.backend.repo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.backend.model.ToDoElement;
+import org.springframework.stereotype.Repository;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+import java.util.*;
+
+@Repository
 public class ToDoRepo {
+
+
+    private Map<String, ToDoElement> toDosList = new HashMap<>();
+
+    public List<ToDoElement> getAllToDos(){
+        return new ArrayList<ToDoElement>(toDosList.values());
+    }
+
+    public ToDoElement postToDo(ToDoElement toDoElement){
+        toDosList.put(toDoElement.getId(), toDoElement);
+        return toDoElement;
+    }
+
+    public ToDoElement editToDo(ToDoElement toDoElement) {
+        toDosList.put(toDoElement.getId(), toDoElement);
+        return toDoElement;
+    }
+
+    public ToDoElement getToDoId(String id) {
+        return toDosList.get(id);
+    }
+
 
 }
