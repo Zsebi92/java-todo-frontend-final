@@ -11,6 +11,7 @@ import java.util.List;
 @RequestMapping("/api/todo")
 public class ToDoController {
 
+    // https://github.com/Kerambad/java-todo-frontend/tree/FeatureTryPostOnlyObject
     private final ToDoService service;
 
 
@@ -30,14 +31,19 @@ public class ToDoController {
         return service.postToDo(q);
     }
 
-    @PutMapping("/edit")
-    public ToDoElement editToDo(@RequestBody ToDoElement q){
-        return service.editToDo(q);
+    @PutMapping("{id}")
+    public ToDoElement editToDo(@PathVariable String id, @RequestBody ToDoElement toDoElement){
+        return service.editToDo(id, toDoElement);
     }
 
     @GetMapping("{id}")
     public ToDoElement getToDoById(@PathVariable String id){
         return service.getToDoId(id);
+    }
+
+    @DeleteMapping("{id}")
+    public ToDoElement deleteToDo(@PathVariable String id){
+        return service.deleteToDo(id);
     }
 
 

@@ -11,8 +11,16 @@ public class ToDoRepo {
 
     private Map<String, ToDoElement> toDosList = new HashMap<>();
 
+    public Map<String, ToDoElement> getToDos() {
+        return toDosList;
+    }
+
     public List<ToDoElement> getAllToDos(){
         return new ArrayList<ToDoElement>(toDosList.values());
+    }
+
+    public ToDoElement getToDoId(String id) {
+        return toDosList.get(id);
     }
 
     public ToDoElement postToDo(ToDoElement toDoElement){
@@ -21,13 +29,18 @@ public class ToDoRepo {
     }
 
     public ToDoElement editToDo(ToDoElement toDoElement) {
-        toDosList.put(toDoElement.getId(), toDoElement);
-        return toDoElement;
+        toDosList.get(toDoElement.getId()).setStatus(toDoElement.getStatus());
+        toDosList.get(toDoElement.getId()).setDescription(toDoElement.getDescription());
+        return toDosList.get(toDoElement.getId());
     }
 
-    public ToDoElement getToDoId(String id) {
-        return toDosList.get(id);
+
+    public ToDoElement deleteToDo(String id){
+        return toDosList.remove(id);
     }
+
+
+
 
 
 }
