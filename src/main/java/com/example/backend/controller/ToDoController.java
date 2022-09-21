@@ -11,7 +11,6 @@ import java.util.List;
 @RequestMapping("/api/todo")
 public class ToDoController {
 
-    // https://github.com/Kerambad/java-todo-frontend/tree/FeatureTryPostOnlyObject
     private final ToDoService service;
 
 
